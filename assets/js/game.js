@@ -64,9 +64,11 @@ var Game = {
 
 	update: function() {
 		game.physics.arcade.collide(ball, bricks, this.ballHitBrick, null, this);
-		game.physics.arcade.collide(ball, coins, this.ballHitCoin, null, this);
+		//game.physics.arcade.collide(ball, coins, this.ballHitCoin, null, this);
 
-
+		if(this.checkOverlap(ball, coins, this.ballHitCoin)) {
+			
+		}
 	},
 
 	ballHitBrick: function(_ball, _brick) {
@@ -96,6 +98,13 @@ var Game = {
 		return coin;
 	},
 
+	checkOverlap: function(obj1, obj2, func) {
+		return game.physics.arcade.overlap(obj1, obj2, func, null, this);
+	},
+
+	test: function() {
+		console.log("This is a test.");
+	},
 
 	resetBall: function() {
 	    ball = game.add.sprite(screenWidth/2, screenHeight/2, 'block');
